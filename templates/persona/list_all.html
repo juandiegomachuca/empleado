@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+<!-- titulo -->
+{% block titulo %} Listar Personas {% endblock titulo %}
+
+<!-- contenido -->
+{% block content %}
+
+<!-- incluir el header -->
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+
+    <div class="grid-x">
+        <h1 class="cell">Lista empleados</h1>
+        <form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %}
+            <div class="cell large-7">
+                <input type="text" placeholder="Buscar empleado" id="busper" name="busper">
+            </div>
+            <div class="cell large-2">
+                <button type="submit" class="success button">Buscar</button>
+            </div>
+        </form>
+
+
+        <div class="cell">
+            <table border="true">
+                <thead>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Depto</th>
+                    <th>Acción</th>
+                </thead>
+
+                <tbody>
+                    {% for elemento in lista %}
+                    <tr>
+                        <td>
+                            {{ elemento.id }}
+                        </td>
+                        <td>
+                            {{ elemento.first_name }}
+                        </td>
+                        <td>
+                            {{ elemento.last_name }}
+                        </td>
+                        <td>
+                            {{ elemento.departamento }}
+                        </td>
+                        <td>
+                            <a class="button warning" href="{% url 'persona_app:emp_det' elemento.id %}">Ver</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="cell">
+            {% if is_paginated %}
+            <nav aria-label="Pagination">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li class="pagination-previous">
+                        <a href="?page={{page_obj.previous_page_number}}">Atras</a>
+                    </li>
+                    {% else %}
+                    <li class="pagination-previous disabled">
+                        Atras
+                    </li>
+                    {% endif %}
+
+                    <!-- recorrer todas las páginas -->
+                    {% for pagina in paginator.page_range %}
+                    <li>
+
+
+                        {% if pagina == page_obj.number %}
+                        <!-- resaltar pagina actual -->
+                        <li class="current"><span class="show-for-sr">You're on page</span>{{ pagina }}</li>
+                        <!-- si no -->
+                        {% else %}
+                        <!-- normal -->
+                        <a href="?page={{pagina}}">{{ pagina }}</a> {% endif %}
+
+                    </li>
+                    {% endfor %}
+
+                    <!-- para el boton siguiente -->
+                    {% if page_obj.has_next %}
+                    <li class="pagination-next">
+                        <a href="?page={{page_obj.next_page_number}}" aria-label="Next page">Siguiente</a>
+                    </li>
+                    {% else %}
+                    <li class="pagination-next disabled">
+                        Siguiente
+                    </li>
+                    {% endif %}
+
+
+
+                </ul>
+            </nav>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

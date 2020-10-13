@@ -1,0 +1,23 @@
+<h1>Lista de Terceros</h1>
+
+
+<table border="true"> 
+
+<th>Nombre</th>
+<th>Apellido</th>
+<th>Depto</th>
+
+{% for elemento in lista %}
+<tr>
+    <td>
+        {{ elemento.razon_social }}
+    </td>
+    <td>
+        {{ elemento.nit }}
+    </td>
+    <td>
+        {{ elemento.departamento }}
+    </td>
+</tr>
+{% endfor %}
+</table>

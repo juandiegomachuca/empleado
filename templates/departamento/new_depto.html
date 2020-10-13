@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+<!-- titulo -->
+{% block titulo %} Editar empleado {% endblock titulo %}
+
+<!-- contenido -->
+{% block content %}
+
+<!-- incluir el header -->
+{% include 'includes/header.html' %}
+
+
+<div class="grid-container">
+    <div class="grid-x">
+        <h1 class="cell">
+            Nuevo departamento y persona
+        </h1>
+        <p class="cell">
+            Aquí se utiliza la grabación de dos tablas sin utilizar el modelo.
+        </p>
+        <form class="grid-x callout grid-margin-x" method="POST">{% csrf_token %}
+            <h3 class="cell">Datos empleado</h3>
+            <div class="medium-6 cell">
+                <label>Nombre:
+                  {{form.nombre}}
+                </label>
+            </div>
+            <div class="medium-6 cell">
+                <label>Apellidos:
+                  {{form.apellidos}}
+                </label>
+            </div>
+            <h3 class="cell">Departamento</h3>
+            <div class="medium-6 cell">
+                <label>Pepartamento:
+                  {{form.departamento}}
+                </label>
+            </div>
+            <div class="medium-6 cell">
+                <label>Shorname:
+                  {{form.shorname}}
+                </label>
+            </div>
+
+            <div class="cell">
+                <button type="submit" class="button success">Crear ambos</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock content %}

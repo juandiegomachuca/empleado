@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+<!-- tit -->
+{% block titulo %} Detalles {% endblock titulo %} {% block content %} {% include 'includes/header.html' %}
+
+<!-- <h1>Detalles {{ titulo }}</h1>
+
+<p>{{ lista.first_name }}</p>
+<p>{{ lista.last_name }}</p> -->
+
+<div class="grid-container">
+
+    <div class="grid-x">
+        <dev class="cell grid-x grid-margin-x ali" method="GET">{% csrf_token %}
+
+            <div class="cell large-4 card" style="width: 300px;">
+                <div class="card-divider">
+                    {{ lista.get_job_display }}
+                </div>
+
+                {% if lista.avatar %}
+                <!-- si existe -->
+                <img src="{{ lista.avatar.url }}">
+                <!-- sino -->
+                {% else %}
+                <img src="#">
+                <!-- fin -->
+                {% endif %}
+
+                <div class="card-section">
+                    <h4>{{ lista.first_name }} {{ lista.last_name }}</h4>
+                    <p>
+                        Id: {{ lista.id }}
+                    </p>
+                    <p>
+                        <p><span class="label">Departamento</span></p>
+                        Depto: {{ lista.departamento.name }}
+                    </p>
+                    <p>
+
+                        {% if lista.hoja_vida %}
+                        <p><span class="label">Hoja de vida</span></p>
+                        <p>{{ lista.hoja_vida }}</p>
+                        {% endif %}
+
+                    </p>
+                    <p><span class="label">Habilidades</span></p>
+                    <ul class="vertical menu">
+                        {% for h in lista.habilidades.all %}
+                        <!-- imprimir la habilidad -->
+                        <li>{{ h.habilidad }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+
+    </div>
+
+
+    {% endblock content %}

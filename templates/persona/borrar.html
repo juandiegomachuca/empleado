@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<!-- titulo -->
+{% block titulo %} Borrar persona {% endblock titulo %}
+
+<!-- contenido -->
+{% block content %}
+
+<!-- incluir el header -->
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <h1 class="cell">Borrar persona:</h1>
+        <h2>{{ lista.first_name }} {{ lista.last_name }} ?</h2>
+
+        <form class="cell" method="POST">{% csrf_token %}
+            <div class="callout secondary">
+                <p>
+                    Eliminar persona borrará todos sus datos y relaciones. Asegúrese que desea borrar a esta persona pues no podrá recuperar sus datos una vez confirme la acción
+                </p>
+                <button type="submit" class="button alert">Confirmar borrado</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock content %}

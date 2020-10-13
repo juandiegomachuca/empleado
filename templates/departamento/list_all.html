@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+<!-- titulo -->
+{% block titulo %} Listar Departamentos {% endblock titulo %} {% block content %} {% include 'includes/header.html' %}
+
+<div class="grid-container">
+
+    <div class="grid-x">
+        <h1 class="cell">Lista departamentos</h1>
+
+        <div class="cell">
+            <table border="true">
+                <thead>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Corto</th>
+                    <th>Anulado</th>
+                    <th>Acción</th>
+                </thead>
+
+                <tbody>
+                    {% for elemento in lista %}
+                    <tr>
+                        <td>
+                            {{ elemento.id }}
+                        </td>
+                        <td>
+                            {{ elemento.name }}
+                        </td>
+                        <td>
+                            {{ elemento.shor_name }}
+                        </td>
+                        <td>
+                            {{ elemento.anulate }}
+                        </td>
+                        <td>
+                            <a class="button warning" href="#">Ver empleados</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+    {% endblock content %}

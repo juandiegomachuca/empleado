@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="es-co">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba</title>
+
+    <!-- <link rel="stylesheet" href="{% static 'prueba.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
+</head>
+<body>
+    
+<h1 class="ejemplo1">Lista Pru BD</h1>
+<h2 class="ejemplo2">Cargando estilos</h2>
+
+
+<table border="true"> 
+
+<th>Titulo</th>
+<th>Subitulo</th>
+<th>Cantidad</th>
+<th>Valor</th>
+
+{% for elemento in lista %}
+<tr>
+    <td>
+        {{ elemento.titulo }}
+    </td>
+    <td>
+        {{ elemento.subtitulo }}
+    </td>
+    <td>
+        {{ elemento.cantidad }}
+    </td>
+    <td>
+        {{ elemento.valor }}
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+<!-- Anchors (links) -->
+<a href="about.html" class="button">Learn More</a>
+<a href="#features" class="button">View All Features</a>
+
+<!-- Buttons (actions) -->
+<button type="button" class="success button">Save</button>
+<button type="button" class="alert button">Delete</button>
+
+</body>
+</html>

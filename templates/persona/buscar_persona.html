@@ -1,0 +1,28 @@
+<h1>Buscar personas</h1>
+
+<form method="get">{% csrf_token %}
+    <input type="text" placeholder="Persona a buscar" id="busper" name="busper">
+    <button type="submit">Buscar</button>
+</form>
+
+<table border="true"> 
+
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Depto</th>
+    
+    {% for elemento in lista %}
+    <tr>
+        <td>
+            {{ elemento.first_name }}
+        </td>
+        <td>
+            {{ elemento.last_name }}
+        </td>
+        <td>
+            {{ elemento.departamento }}
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+    

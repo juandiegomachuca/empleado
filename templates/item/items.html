@@ -1,0 +1,27 @@
+<h1>Lista de Items</h1>
+
+
+<table border="true"> 
+
+<th>Codigo</th>
+<th>Descripcion</th>
+<th>Cantidad</th>
+<th>Precio</th>
+
+{% for elemento in lista %}
+<tr>
+    <td>
+        {{ elemento.codigo }}
+    </td>
+    <td>
+        {{ elemento.descripcion }}
+    </td>
+    <td>
+        {{ elemento.cantidad }}
+    </td>
+    <td>
+        {{ elemento.precio }}
+    </td>
+</tr>
+{% endfor %}
+</table>

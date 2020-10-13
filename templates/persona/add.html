@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+<!-- titulo -->
+{% block titulo %} Crear personas {% endblock titulo %}
+
+<!-- contenido -->
+{% block content %}
+
+<!-- incluir el header -->
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <h1 class="cell">
+            Crear empleado
+        </h1>
+        <div class="cell">
+            <form class="grid-x grid-margin-x" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="medium-6 cell">
+                    <label>Nombre:
+                      {{form.first_name}}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Apellidos:
+                      {{form.last_name}}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Departamento:
+                      {{form.departamento}}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Job:
+                      {{form.job}}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Habilidades:
+                      {{form.habilidades}}
+                    </label>
+                </div>
+                <div class="cell">
+                    <label>Hoja de vida:
+                      {{form.hoja_vida}}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Anulado:
+                      {{form.anulate}}
+                    </label>
+                </div>
+                <div class="cell">
+                    <label>Foto:
+                      {{form.avatar}}
+                    </label>
+                </div>
+                <div class="cell">
+                    <button type="submit" class="button success">Adicionar Empleado</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
